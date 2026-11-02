@@ -7,6 +7,9 @@
 
 #include "Horario.h"
 #include "Materia.h"
+#include <iostream>
+
+using namespace std;
 
 ////////////////////////////////////////////////////////////////////////
 // Name:       Materia::getNrc()
@@ -62,9 +65,8 @@ void Materia::setNombre(std::string newNombre)
 // Return:     Lista_Doble<Horario>&
 ////////////////////////////////////////////////////////////////////////
 
-Lista_Doble<Horario>& Materia::getHorarios(void)
-{
-   // TODO : implement
+Lista_Doble<Horario>& Materia::getHorarios(void){
+   return horarios;
 }
 
 ////////////////////////////////////////////////////////////////////////
@@ -75,9 +77,8 @@ Lista_Doble<Horario>& Materia::getHorarios(void)
 // Return:     void
 ////////////////////////////////////////////////////////////////////////
 
-void Materia::agregarHorario(Horario horario)
-{
-   // TODO : implement
+void Materia::agregarHorario(Horario horario){
+   horarios.insertarFinal(horario);
 }
 
 ////////////////////////////////////////////////////////////////////////
@@ -86,9 +87,9 @@ void Materia::agregarHorario(Horario horario)
 // Return:     
 ////////////////////////////////////////////////////////////////////////
 
-Materia::Materia()
-{
-   horario = NULL;
+Materia::Materia(){
+   nrc = 0;
+   nombre = "";
 }
 
 ////////////////////////////////////////////////////////////////////////
@@ -97,9 +98,7 @@ Materia::Materia()
 // Return:     
 ////////////////////////////////////////////////////////////////////////
 
-Materia::~Materia()
-{
-   // TODO : implement
+Materia::~Materia(){
 }
 
 ////////////////////////////////////////////////////////////////////////
@@ -111,9 +110,9 @@ Materia::~Materia()
 // Return:     
 ////////////////////////////////////////////////////////////////////////
 
-Materia::Materia(int nrc, std::string nombre)
-{
-   // TODO : implement
+Materia::Materia(int nrc, std::string nombre){
+   this->nrc = nrc;
+   this->nombre = nombre;
 }
 
 ////////////////////////////////////////////////////////////////////////
@@ -124,9 +123,8 @@ Materia::Materia(int nrc, std::string nombre)
 // Return:     bool
 ////////////////////////////////////////////////////////////////////////
 
-bool Materia::operator==(Materia otro)
-{
-   // TODO : implement
+bool Materia::operator==(Materia otro){
+   return nrc == otro.nrc;
 }
 
 ////////////////////////////////////////////////////////////////////////
@@ -135,7 +133,9 @@ bool Materia::operator==(Materia otro)
 // Return:     void
 ////////////////////////////////////////////////////////////////////////
 
-void Materia::imprimir(void)
-{
-   // TODO : implement
+void Materia::imprimir(void){
+   cout << "NRC: " << nrc << endl;
+   cout << "Nombre: " << nombre << endl;
+   cout << "Horarios: " << endl;
+   horarios.imprimir();
 }

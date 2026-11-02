@@ -7,10 +7,7 @@
 
 #if !defined(__Horario_Registro_Materia_Registro_h)
 #define __Horario_Registro_Materia_Registro_h
-
-class Materia;
-class Horario;
-class Profesor;
+#include <string>
 
 class Registro
 {
@@ -34,10 +31,6 @@ public:
    void imprimir(void);
    bool registrarEntrada(int hora_Actual);
    bool registrarSalida(int hora_Actual);
-
-   Materia* materia;
-   Horario* horario;
-   Profesor* profesor;
 
 protected:
 private:

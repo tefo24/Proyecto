@@ -5,10 +5,11 @@
  * Purpose: Implementation of the class Registro
  ***********************************************************************/
 
-#include "Materia.h"
-#include "Horario.h"
-#include "Profesor.h"
+
 #include "Registro.h"
+#include <iostream>
+#include <iomanip>  
+using namespace std;
 
 ////////////////////////////////////////////////////////////////////////
 // Name:       Registro::getCedula()
@@ -160,11 +161,13 @@ void Registro::setHora_Salida(int newHora_Salida)
 // Return:     
 ////////////////////////////////////////////////////////////////////////
 
-Registro::Registro()
-{
-   materia = NULL;
-   horario = NULL;
-   profesor = NULL;
+Registro::Registro(){
+   cedula = "";
+   nrc = 0;
+   id_Horario = 0;
+   fecha = "";
+   hora_Entrada = -1;
+   hora_Salida = -1;
 }
 
 ////////////////////////////////////////////////////////////////////////
@@ -173,9 +176,7 @@ Registro::Registro()
 // Return:     
 ////////////////////////////////////////////////////////////////////////
 
-Registro::~Registro()
-{
-   // TODO : implement
+Registro::~Registro(){
 }
 
 ////////////////////////////////////////////////////////////////////////
@@ -189,9 +190,13 @@ Registro::~Registro()
 // Return:     
 ////////////////////////////////////////////////////////////////////////
 
-Registro::Registro(std::string cedula, int nrc, int id_Horario, std::string fecha)
-{
-   // TODO : implement
+Registro::Registro(std::string cedula, int nrc, int id_Horario, std::string fecha){
+   hora_Entrada = -1;
+   hora_Salida = -1;
+   this->cedula = cedula;
+   this->nrc = nrc;
+   this->id_Horario = id_Horario;
+   this->fecha = fecha;
 }
 
 ////////////////////////////////////////////////////////////////////////
@@ -202,9 +207,8 @@ Registro::Registro(std::string cedula, int nrc, int id_Horario, std::string fech
 // Return:     bool
 ////////////////////////////////////////////////////////////////////////
 
-bool Registro::operator==(Registro otro)
-{
-   // TODO : implement
+bool Registro::operator==(Registro otro){
+   return cedula == otro.cedula && id_Horario == otro.id_Horario && fecha == otro.fecha;
 }
 
 ////////////////////////////////////////////////////////////////////////
@@ -213,9 +217,21 @@ bool Registro::operator==(Registro otro)
 // Return:     void
 ////////////////////////////////////////////////////////////////////////
 
-void Registro::imprimir(void)
-{
-   // TODO : implement
+void Registro::imprimir(void){
+   cout << "Cedula: " << cedula << " | NRC: " << nrc << " | Fecha: " << fecha;
+   cout << " | Entrada: ";
+   if (hora_Entrada == -1) {
+      cout << "No registrada";
+   } else {
+      cout << setfill('0') << setw(2) << hora_Entrada / 60 << ":" << setw(2) << hora_Entrada % 60;
+   }
+   cout << " | Salida: ";
+   if (hora_Salida == -1) {
+      cout << "No registrada";
+   } else {
+      cout << setfill('0') << setw(2) << hora_Salida / 60 << ":" << setw(2) << hora_Salida % 60;
+   }
+   cout << endl;
 }
 
 ////////////////////////////////////////////////////////////////////////
@@ -226,9 +242,12 @@ void Registro::imprimir(void)
 // Return:     bool
 ////////////////////////////////////////////////////////////////////////
 
-bool Registro::registrarEntrada(int hora_Actual)
-{
-   // TODO : implement
+bool Registro::registrarEntrada(int hora_Actual){
+   if (hora_Entrada != -1){
+      return false;
+   }
+   hora_Entrada = hora_Actual;
+   return true;
 }
 
 ////////////////////////////////////////////////////////////////////////
@@ -239,7 +258,14 @@ bool Registro::registrarEntrada(int hora_Actual)
 // Return:     bool
 ////////////////////////////////////////////////////////////////////////
 
-bool Registro::registrarSalida(int hora_Actual)
-{
-   // TODO : implement
+bool Registro::registrarSalida(int hora_Actual){
+   if (hora_Entrada == -1){
+      return false;
+   }
+   if (hora_Salida != -1){
+      return false;
+   }
+   hora_Salida = hora_Actual;
+   return true;
+
 }

@@ -7,6 +7,7 @@
 
 #if !defined(__Horario_Registro_Materia_Horario_h)
 #define __Horario_Registro_Materia_Horario_h
+#include <string>
 
 class Horario
 {

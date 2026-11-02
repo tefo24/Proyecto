@@ -8,9 +8,9 @@
 #if !defined(__Horario_Registro_Materia_Materia_h)
 #define __Horario_Registro_Materia_Materia_h
 
-class Horario;
-
-#include <Horario.h>
+#include "Horario.h"
+#include <string>
+#include "Lista_Doble.h"
 
 class Materia
 {
@@ -27,7 +27,6 @@ public:
    bool operator==(Materia otro);
    void imprimir(void);
 
-   Horario** horario;
 
 protected:
 private:

@@ -6,6 +6,9 @@
  ***********************************************************************/
 
 #include "Horario.h"
+#include <iostream>
+#include <iomanip>
+using namespace std;
 
 ////////////////////////////////////////////////////////////////////////
 // Name:       Horario::getId_Horario()
@@ -109,8 +112,11 @@ void Horario::setDia(std::string newDia)
 // Return:     
 ////////////////////////////////////////////////////////////////////////
 
-Horario::Horario()
-{
+Horario::Horario(){
+   id_Horario = 0;
+   hora_Inicio = 0;
+   hora_Fin = 0;
+   dia = "";
 }
 
 ////////////////////////////////////////////////////////////////////////
@@ -119,9 +125,7 @@ Horario::Horario()
 // Return:     
 ////////////////////////////////////////////////////////////////////////
 
-Horario::~Horario()
-{
-   // TODO : implement
+Horario::~Horario(){
 }
 
 ////////////////////////////////////////////////////////////////////////
@@ -135,9 +139,11 @@ Horario::~Horario()
 // Return:     
 ////////////////////////////////////////////////////////////////////////
 
-Horario::Horario(int id_Horario, int hora_Inicio, int hora_Fin, std::string dia)
-{
-   // TODO : implement
+Horario::Horario(int id_Horario, int hora_Inicio, int hora_Fin, std::string dia){
+   this->id_Horario = id_Horario;
+   this->hora_Inicio = hora_Inicio;
+   this->hora_Fin = hora_Fin;
+   this->dia = dia;
 }
 
 ////////////////////////////////////////////////////////////////////////
@@ -148,9 +154,8 @@ Horario::Horario(int id_Horario, int hora_Inicio, int hora_Fin, std::string dia)
 // Return:     bool
 ////////////////////////////////////////////////////////////////////////
 
-bool Horario::operator==(Horario otro)
-{
-   // TODO : implement
+bool Horario::operator==(Horario otro){
+   return id_Horario == otro.id_Horario;
 }
 
 ////////////////////////////////////////////////////////////////////////
@@ -159,7 +164,10 @@ bool Horario::operator==(Horario otro)
 // Return:     void
 ////////////////////////////////////////////////////////////////////////
 
-void Horario::imprimir(void)
-{
-   // TODO : implement
+void Horario::imprimir(void){
+   cout << dia << " "
+        << setfill('0') << setw(2) << hora_Inicio / 60 << ":" << setw(2) << hora_Inicio % 60
+        << " - "
+        << setw(2) << hora_Fin / 60 << ":" << setw(2) << hora_Fin % 60
+        << endl;
 }
