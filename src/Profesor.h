@@ -13,7 +13,7 @@
 #include "Persona.h" 
 #include <string>
 #include "Materia.h"
-//#include "Lista_Doble.h"
+#include "Lista_Doble.h"
 
 class Profesor : public Persona
 {
