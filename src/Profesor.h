@@ -1,16 +1,19 @@
 /***********************************************************************
  * Module:  Profesor.h
  * Author:  RIZEN 7
- * Modified: sábado, 31 de octubre de 2026 14:30:00
+ * Modified: sï¿½bado, 31 de octubre de 2026 14:30:00
  * Purpose: Declaration of the class Profesor
  ***********************************************************************/
 
 #if !defined(__Horario_Registro_Materia_Profesor_h)
 #define __Horario_Registro_Materia_Profesor_h
 
-class Materia;
+//class Materia;
 
-#include <Persona.h>
+#include "Persona.h" 
+#include <string>
+#include "Materia.h"
+//#include "Lista_Doble.h"
 
 class Profesor : public Persona
 {
@@ -22,7 +25,7 @@ public:
    bool operator==(Profesor otro);
    void imprimir(void);
 
-   Materia** materia;
+   //Materia** materia;
 
 protected:
 private:
