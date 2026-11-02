@@ -1,0 +1,141 @@
+/***********************************************************************
+ * Module:  Materia.cpp
+ * Author:  RIZEN 7
+ * Modified: lunes, 2 de noviembre de 2026 14:04:02
+ * Purpose: Implementation of the class Materia
+ ***********************************************************************/
+
+#include "Horario.h"
+#include "Materia.h"
+
+////////////////////////////////////////////////////////////////////////
+// Name:       Materia::getNrc()
+// Purpose:    Implementation of Materia::getNrc()
+// Return:     int
+////////////////////////////////////////////////////////////////////////
+
+int Materia::getNrc(void)
+{
+   return nrc;
+}
+
+////////////////////////////////////////////////////////////////////////
+// Name:       Materia::setNrc(int newNrc)
+// Purpose:    Implementation of Materia::setNrc()
+// Parameters:
+// - newNrc
+// Return:     void
+////////////////////////////////////////////////////////////////////////
+
+void Materia::setNrc(int newNrc)
+{
+   nrc = newNrc;
+}
+
+////////////////////////////////////////////////////////////////////////
+// Name:       Materia::getNombre()
+// Purpose:    Implementation of Materia::getNombre()
+// Return:     std::string
+////////////////////////////////////////////////////////////////////////
+
+std::string Materia::getNombre(void)
+{
+   return nombre;
+}
+
+////////////////////////////////////////////////////////////////////////
+// Name:       Materia::setNombre(std::string newNombre)
+// Purpose:    Implementation of Materia::setNombre()
+// Parameters:
+// - newNombre
+// Return:     void
+////////////////////////////////////////////////////////////////////////
+
+void Materia::setNombre(std::string newNombre)
+{
+   nombre = newNombre;
+}
+
+////////////////////////////////////////////////////////////////////////
+// Name:       Materia::getHorarios()
+// Purpose:    Implementation of Materia::getHorarios()
+// Return:     Lista_Doble<Horario>&
+////////////////////////////////////////////////////////////////////////
+
+Lista_Doble<Horario>& Materia::getHorarios(void)
+{
+   // TODO : implement
+}
+
+////////////////////////////////////////////////////////////////////////
+// Name:       Materia::agregarHorario(Horario horario)
+// Purpose:    Implementation of Materia::agregarHorario()
+// Parameters:
+// - horario
+// Return:     void
+////////////////////////////////////////////////////////////////////////
+
+void Materia::agregarHorario(Horario horario)
+{
+   // TODO : implement
+}
+
+////////////////////////////////////////////////////////////////////////
+// Name:       Materia::Materia()
+// Purpose:    Implementation of Materia::Materia()
+// Return:     
+////////////////////////////////////////////////////////////////////////
+
+Materia::Materia()
+{
+   horario = NULL;
+}
+
+////////////////////////////////////////////////////////////////////////
+// Name:       Materia::~Materia()
+// Purpose:    Implementation of Materia::~Materia()
+// Return:     
+////////////////////////////////////////////////////////////////////////
+
+Materia::~Materia()
+{
+   // TODO : implement
+}
+
+////////////////////////////////////////////////////////////////////////
+// Name:       Materia::Materia(int nrc, std::string nombre)
+// Purpose:    Implementation of Materia::Materia()
+// Parameters:
+// - nrc
+// - nombre
+// Return:     
+////////////////////////////////////////////////////////////////////////
+
+Materia::Materia(int nrc, std::string nombre)
+{
+   // TODO : implement
+}
+
+////////////////////////////////////////////////////////////////////////
+// Name:       Materia::operator==(Materia otro)
+// Purpose:    Implementation of Materia::operator==()
+// Parameters:
+// - otro
+// Return:     bool
+////////////////////////////////////////////////////////////////////////
+
+bool Materia::operator==(Materia otro)
+{
+   // TODO : implement
+}
+
+////////////////////////////////////////////////////////////////////////
+// Name:       Materia::imprimir()
+// Purpose:    Implementation of Materia::imprimir()
+// Return:     void
+////////////////////////////////////////////////////////////////////////
+
+void Materia::imprimir(void)
+{
+   // TODO : implement
+}
