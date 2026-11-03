@@ -40,7 +40,7 @@ void Profesor::imprimir() {
         cout << "      (sin materias asignadas)" << endl;
     } else {
         for (Nodo<Materia>* actual = materias.getCabeza();
-             actual != NULL;
+             actual != nullptr;
              actual = actual->getSiguiente()) {
             cout << "      NRC " << actual->getDato().getNrc()
                  << " - " << actual->getDato().getNombre() << endl;

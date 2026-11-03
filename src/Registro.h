@@ -27,7 +27,7 @@ public:
    Registro();
    ~Registro();
    Registro(std::string cedula, int nrc, int id_Horario, std::string fecha);
-   bool operator==(Registro otro);
+   bool operator==(const Registro& otro) const;
    void imprimir(void);
    bool registrarEntrada(int hora_Actual);
    bool registrarSalida(int hora_Actual);

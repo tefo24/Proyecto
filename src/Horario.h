@@ -23,7 +23,7 @@ public:
    Horario();
    ~Horario();
    Horario(int id_Horario, int hora_Inicio, int hora_Fin, std::string dia);
-   bool operator==(Horario otro);
+   bool operator==(const Horario& otro) const;
    void imprimir(void);
 
 protected:

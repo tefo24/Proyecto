@@ -207,7 +207,7 @@ Registro::Registro(std::string cedula, int nrc, int id_Horario, std::string fech
 // Return:     bool
 ////////////////////////////////////////////////////////////////////////
 
-bool Registro::operator==(Registro otro){
+bool Registro::operator==(const Registro& otro) const{
    return cedula == otro.cedula && id_Horario == otro.id_Horario && fecha == otro.fecha;
 }
 

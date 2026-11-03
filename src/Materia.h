@@ -24,7 +24,7 @@ public:
    Materia();
    ~Materia();
    Materia(int nrc, std::string nombre);
-   bool operator==(Materia otro);
+   bool operator==(const Materia& otro) const;
    void imprimir(void);
 
 

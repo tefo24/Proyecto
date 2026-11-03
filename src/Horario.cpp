@@ -154,7 +154,7 @@ Horario::Horario(int id_Horario, int hora_Inicio, int hora_Fin, std::string dia)
 // Return:     bool
 ////////////////////////////////////////////////////////////////////////
 
-bool Horario::operator==(Horario otro){
+bool Horario::operator==(const Horario& otro) const{
    return id_Horario == otro.id_Horario;
 }
 

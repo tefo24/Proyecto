@@ -8,7 +8,6 @@
 #if !defined(__Horario_Registro_Materia_Profesor_h)
 #define __Horario_Registro_Materia_Profesor_h
 
-//class Materia;
 
 #include "Persona.h" 
 #include <string>
@@ -25,7 +24,6 @@ public:
    bool operator==(const Profesor& otro) const;
    void imprimir(void);
 
-   //Materia** materia;
 
 protected:
 private:

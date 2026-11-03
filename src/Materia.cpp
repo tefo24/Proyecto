@@ -123,7 +123,7 @@ Materia::Materia(int nrc, std::string nombre){
 // Return:     bool
 ////////////////////////////////////////////////////////////////////////
 
-bool Materia::operator==(Materia otro){
+bool Materia::operator==(const Materia& otro) const{
    return nrc == otro.nrc;
 }
 
