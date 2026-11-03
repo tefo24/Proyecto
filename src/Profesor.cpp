@@ -1,81 +1,50 @@
 /***********************************************************************
  * Module:  Profesor.cpp
  * Author:  RIZEN 7
- * Modified: sábado, 31 de octubre de 2026 14:30:00
+ * Modified: sï¿½bado, 31 de octubre de 2026 14:30:00
  * Purpose: Implementation of the class Profesor
  ***********************************************************************/
-
-#include "Materia.h"
 #include "Profesor.h"
+#include <iostream>
 
-////////////////////////////////////////////////////////////////////////
-// Name:       Profesor::getMaterias()
-// Purpose:    Implementation of Profesor::getMaterias()
-// Return:     Lista_Doble<Materia>&
-////////////////////////////////////////////////////////////////////////
+using namespace std;
 
-Lista_Doble<Materia>& Profesor::getMaterias(void)
-{
-   return materias;
+// Constructor vacio: llama al constructor vacio de Persona
+Profesor::Profesor() : Persona() {
 }
 
-////////////////////////////////////////////////////////////////////////
-// Name:       Profesor::Profesor()
-// Purpose:    Implementation of Profesor::Profesor()
-// Return:     
-////////////////////////////////////////////////////////////////////////
-
-Profesor::Profesor()
-{
-   materia = NULL;
+// Constructor con parametros: le pasa los datos a Persona
+Profesor::Profesor(string cedula, string nombre, string apellido)
+    : Persona(cedula, nombre, apellido) {
 }
 
-////////////////////////////////////////////////////////////////////////
-// Name:       Profesor::~Profesor()
-// Purpose:    Implementation of Profesor::~Profesor()
-// Return:     
-////////////////////////////////////////////////////////////////////////
-
-Profesor::~Profesor()
-{
-   // TODO : implement
+Profesor::~Profesor() {
 }
 
-////////////////////////////////////////////////////////////////////////
-// Name:       Profesor::Profesor(std::string cedula, std::string nombre, std::string apellido)
-// Purpose:    Implementation of Profesor::Profesor()
-// Parameters:
-// - cedula
-// - nombre
-// - apellido
-// Return:     
-////////////////////////////////////////////////////////////////////////
-
-Profesor::Profesor(std::string cedula, std::string nombre, std::string apellido)
-{
-   // TODO : implement
+// Devuelve la lista por referencia (&) para poder agregar materias a la lista real
+Lista_Doble<Materia>& Profesor::getMaterias() {
+    return this->materias;
 }
 
-////////////////////////////////////////////////////////////////////////
-// Name:       Profesor::operator==(Profesor otro)
-// Purpose:    Implementation of Profesor::operator==()
-// Parameters:
-// - otro
-// Return:     bool
-////////////////////////////////////////////////////////////////////////
-
-bool Profesor::operator==(Profesor otro)
-{
-   // TODO : implement
+// Dos profesores son iguales si tienen la misma cedula
+bool Profesor::operator==(const Profesor& otro) const {
+    return this->cedula == otro.cedula;
 }
 
-////////////////////////////////////////////////////////////////////////
-// Name:       Profesor::imprimir()
-// Purpose:    Implementation of Profesor::imprimir()
-// Return:     void
-////////////////////////////////////////////////////////////////////////
+// Imprime datos personales y las materias del horario
+void Profesor::imprimir() {
+    imprimirDatosPersonales();      // metodo heredado de Persona
+    cout << "   Materias:" << endl;
 
-void Profesor::imprimir(void)
-{
-   // TODO : implement
+    if (materias.estaVacia()) {
+        cout << "      (sin materias asignadas)" << endl;
+    } else {
+        for (Nodo<Materia>* actual = materias.getCabeza();
+             actual != NULL;
+             actual = actual->getSiguiente()) {
+            cout << "      NRC " << actual->getDato().getNrc()
+                 << " - " << actual->getDato().getNombre() << endl;
+        }
+    }
+    cout << "   ------------------------------" << endl;
 }

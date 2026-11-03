@@ -22,7 +22,7 @@ public:
    Profesor();
    ~Profesor();
    Profesor(std::string cedula, std::string nombre, std::string apellido);
-   bool operator==(Profesor otro);
+   bool operator==(const Profesor& otro) const;
    void imprimir(void);
 
    //Materia** materia;

@@ -1,127 +1,60 @@
 /***********************************************************************
  * Module:  Persona.cpp
  * Author:  RIZEN 7
- * Modified: sábado, 31 de octubre de 2026 14:30:00
+ * Modified: sï¿½bado, 31 de octubre de 2026 14:30:00
  * Purpose: Implementation of the class Persona
  ***********************************************************************/
 
 #include "Persona.h"
+#include <iostream>
 
-////////////////////////////////////////////////////////////////////////
-// Name:       Persona::getCedula()
-// Purpose:    Implementation of Persona::getCedula()
-// Return:     std::string
-////////////////////////////////////////////////////////////////////////
+using namespace std;
 
-std::string Persona::getCedula(void)
-{
-   return cedula;
+// Constructor vacio
+Persona::Persona() {
+    this->cedula = "";
+    this->nombre = "";
+    this->apellido = "";
 }
 
-////////////////////////////////////////////////////////////////////////
-// Name:       Persona::setCedula(std::string newCedula)
-// Purpose:    Implementation of Persona::setCedula()
-// Parameters:
-// - newCedula
-// Return:     void
-////////////////////////////////////////////////////////////////////////
-
-void Persona::setCedula(std::string newCedula)
-{
-   cedula = newCedula;
+// Constructor con parametros (se llaman igual que los atributos, por eso se usa this->)
+Persona::Persona(string cedula, string nombre, string apellido) {
+    this->cedula = cedula;
+    this->nombre = nombre;
+    this->apellido = apellido;
 }
 
-////////////////////////////////////////////////////////////////////////
-// Name:       Persona::getNombre()
-// Purpose:    Implementation of Persona::getNombre()
-// Return:     std::string
-////////////////////////////////////////////////////////////////////////
-
-std::string Persona::getNombre(void)
-{
-   return nombre;
+Persona::~Persona() {
 }
 
-////////////////////////////////////////////////////////////////////////
-// Name:       Persona::setNombre(std::string newNombre)
-// Purpose:    Implementation of Persona::setNombre()
-// Parameters:
-// - newNombre
-// Return:     void
-////////////////////////////////////////////////////////////////////////
-
-void Persona::setNombre(std::string newNombre)
-{
-   nombre = newNombre;
+// ---------- Getters y setters ----------
+string Persona::getCedula() {
+    return this->cedula;
 }
 
-////////////////////////////////////////////////////////////////////////
-// Name:       Persona::getApellido()
-// Purpose:    Implementation of Persona::getApellido()
-// Return:     std::string
-////////////////////////////////////////////////////////////////////////
-
-std::string Persona::getApellido(void)
-{
-   return apellido;
+void Persona::setCedula(string cedula) {
+    this->cedula = cedula;
 }
 
-////////////////////////////////////////////////////////////////////////
-// Name:       Persona::setApellido(std::string newApellido)
-// Purpose:    Implementation of Persona::setApellido()
-// Parameters:
-// - newApellido
-// Return:     void
-////////////////////////////////////////////////////////////////////////
-
-void Persona::setApellido(std::string newApellido)
-{
-   apellido = newApellido;
+string Persona::getNombre() {
+    return this->nombre;
 }
 
-////////////////////////////////////////////////////////////////////////
-// Name:       Persona::Persona()
-// Purpose:    Implementation of Persona::Persona()
-// Return:     
-////////////////////////////////////////////////////////////////////////
-
-Persona::Persona()
-{
+void Persona::setNombre(string nombre) {
+    this->nombre = nombre;
 }
 
-////////////////////////////////////////////////////////////////////////
-// Name:       Persona::~Persona()
-// Purpose:    Implementation of Persona::~Persona()
-// Return:     
-////////////////////////////////////////////////////////////////////////
-
-Persona::~Persona()
-{
-   // TODO : implement
+string Persona::getApellido() {
+    return this->apellido;
 }
 
-////////////////////////////////////////////////////////////////////////
-// Name:       Persona::Persona(std::string cedula, std::string nombre, std::string apellido)
-// Purpose:    Implementation of Persona::Persona()
-// Parameters:
-// - cedula
-// - nombre
-// - apellido
-// Return:     
-////////////////////////////////////////////////////////////////////////
-
-Persona::Persona(std::string cedula, std::string nombre, std::string apellido)
-{
-   // TODO : implement
+void Persona::setApellido(string apellido) {
+    this->apellido = apellido;
 }
 
-////////////////////////////////////////////////////////////////////////
-// Name:       Persona::imprimirDatosPersonales()
-// Purpose:    Implementation of Persona::imprimirDatosPersonales()
-// Return:     void
-////////////////////////////////////////////////////////////////////////
-
-void Persona::imprimirDatosPersonales(void)
-{
-   // TODO : implement
+// ---------- Imprimir ----------
+void Persona::imprimirDatosPersonales() {
+    cout << "   Cedula  : " << this->cedula << endl;
+    cout << "   Nombre  : " << this->nombre << endl;
+    cout << "   Apellido: " << this->apellido << endl;
 }
