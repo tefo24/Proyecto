@@ -4,7 +4,8 @@
 #include "Profesor.h"
 #include "Lista_Doble.h"
 
-void ingresarProfesor(Lista_Doble<Profesor>& profesores);
+
+void ingresarProfesor(Lista_Doble<Profesor>& profesores, Lista_Doble<Materia>& materias);
 void consultarProfesor(Lista_Doble<Profesor>& profesores);
 void eliminarProfesor(Lista_Doble<Profesor>& profesores);
 void imprimirProfesores(Lista_Doble<Profesor>& profesores);

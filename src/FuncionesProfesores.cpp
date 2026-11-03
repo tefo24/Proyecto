@@ -3,19 +3,29 @@
 #include <iostream>
 using namespace std;
 
-void ingresarProfesor(Lista_Doble<Profesor>& profesores){
+void ingresarProfesor(Lista_Doble<Profesor>& profesores, Lista_Doble<Materia>& materias){
     string cedula = leerCedula();
-
-    // No se permiten cedulas repetidas
     if (profesores.buscar(Profesor(cedula, "", "")) != nullptr){
         cout << "Ya existe un profesor con esa cedula" << endl;
         return;
     }
-
     string nombre = leerSoloLetras("Nombre: ");
     string apellido = leerSoloLetras("Apellido: ");
+    Profesor profesor(cedula, nombre, apellido);
 
-    profesores.insertarFinal(Profesor(cedula, nombre, apellido));
+    int cantidad = leerEnteroRango("Cuantas materias dicta (1-5): ", 1, 5);
+    for (int i = 1; i <= cantidad; i++){
+        int nrc = leerNRC();
+        Nodo<Materia>* encontrada = materias.buscar(Materia(nrc, ""));
+        if (encontrada == nullptr){
+            cout << "La materia no existe" << endl;
+            i--;
+        }else{
+            profesor.getMaterias().insertarFinal(encontrada->getDato());
+        }
+    }
+
+    profesores.insertarFinal(profesor);
     cout << "Profesor ingresado correctamente" << endl;
 }
 
