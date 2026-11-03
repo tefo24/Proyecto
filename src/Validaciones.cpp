@@ -116,3 +116,22 @@ int leerNRC() {
         cout << "  Error: el NRC debe tener exactamente 5 numeros.\n";
     }
 }
+
+string formatoNombre(string texto){
+    bool inicioPalabra = true;
+    for (size_t i = 0; i < texto.size(); i++){
+        if (texto[i] == ' '){
+            inicioPalabra = true;
+        }else if (inicioPalabra){
+            if (texto[i] >= 'a' && texto[i] <= 'z'){
+                texto[i] = texto[i] - 32;
+            }
+            inicioPalabra = false;
+        }else{
+            if (texto[i] >= 'A' && texto[i] <= 'Z'){
+                texto[i] = texto[i] + 32;
+            }
+        }
+    }
+    return texto;
+}

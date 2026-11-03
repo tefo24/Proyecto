@@ -4,33 +4,33 @@
 using namespace std;
 
 void ingresarProfesor(Lista_Doble<Profesor>& profesores, Lista_Doble<Materia>& materias){
-    string cedula = leerCedula();
-    if (profesores.buscar(Profesor(cedula, "", "")) != nullptr){
-        cout << "Ya existe un profesor con esa cedula" << endl;
-        return;
-    }
-    string nombre = leerSoloLetras("Nombre: ");
-    string apellido = leerSoloLetras("Apellido: ");
-    Profesor profesor(cedula, nombre, apellido);
-
     if (materias.estaVacia()){
         cout << "Primero registre materias" << endl;
         return;
     }
 
+    string cedula = leerCedula();
+    if (profesores.buscar(Profesor(cedula, "", "")) != nullptr){
+        cout << "Ya existe un profesor con esa cedula" << endl;
+        return;
+    }
+    string nombre = formatoNombre(leerSoloLetras("Nombre: "));
+    string apellido = formatoNombre(leerSoloLetras("Apellido: "));
+    Profesor profesor(cedula, nombre, apellido);
+
     int cantidad = leerEnteroRango("Cuantas materias dicta (1-5): ", 1, 5);
     for (int i = 1; i <= cantidad; i++){
-    int nrc = leerNRC();
-    Nodo<Materia>* encontrada = materias.buscar(Materia(nrc, ""));
-    if (encontrada == nullptr){
-        cout << "La materia no existe" << endl;
-        int opcion = leerEnteroRango("1. Intentar otro NRC  2. Omitir: ", 1, 2);
-        if (opcion == 1){
+        int nrc = leerNRC();
+        Nodo<Materia>* encontrada = materias.buscar(Materia(nrc, ""));
+        if (encontrada == nullptr){
+            cout << "La materia no existe" << endl;
+            int opcion = leerEnteroRango("1. Intentar otro NRC  2. Omitir: ", 1, 2);
+            if (opcion == 1){
+                i--;
+            }
+        }else if (profesor.getMaterias().buscar(encontrada->getDato()) != nullptr){
+            cout << "Esa materia ya esta asignada a este profesor" << endl;
             i--;
-        }
-    }else if (profesor.getMaterias().buscar(encontrada->getDato()) != nullptr){
-        cout << "Esa materia ya esta asignada a este profesor" << endl;
-        i--;
     }else{
         int nrcChoque = choqueHorario(profesor, encontrada->getDato());
         if (nrcChoque != -1){

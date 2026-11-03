@@ -192,7 +192,7 @@ void cargarProfesores(Lista_Doble<Profesor>& profesores, Lista_Doble<Materia>& m
             continue;
         }
 
-        Profesor profesor(cedula, nombre, apellido);
+        Profesor profesor(cedula, formatoNombre(nombre), formatoNombre(apellido));
 
         // buscar cada NRC en la lista de materias y agregarla al profesor
         stringstream sn(nrcs);
