@@ -13,13 +13,21 @@ void ingresarProfesor(Lista_Doble<Profesor>& profesores, Lista_Doble<Materia>& m
     string apellido = leerSoloLetras("Apellido: ");
     Profesor profesor(cedula, nombre, apellido);
 
+    if (materias.estaVacia()){
+        cout << "Primero registre materias" << endl;
+        return;
+    }
+
     int cantidad = leerEnteroRango("Cuantas materias dicta (1-5): ", 1, 5);
     for (int i = 1; i <= cantidad; i++){
         int nrc = leerNRC();
         Nodo<Materia>* encontrada = materias.buscar(Materia(nrc, ""));
         if (encontrada == nullptr){
             cout << "La materia no existe" << endl;
-            i--;
+            int opcion = leerEnteroRango("1. Intentar otro NRC 2. Omitir: ", 1, 2);
+            if (opcion == 1){
+                i--;
+            }
         }else{
             profesor.getMaterias().insertarFinal(encontrada->getDato());
         }

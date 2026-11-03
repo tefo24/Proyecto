@@ -13,5 +13,6 @@ void agregarHorarioMateria(Lista_Doble<Materia>& materias);
 void eliminarMateria(Lista_Doble<Materia>& materias);
 void consultarMateria(Lista_Doble<Materia>& materias);
 void imprimirMaterias(Lista_Doble<Materia>& materias);
+void leerFranja(int& inicio, int& fin);
 
 #endif

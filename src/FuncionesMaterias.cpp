@@ -31,12 +31,14 @@ void eliminarMateria(Lista_Doble<Materia>& materias){
 }
 
 string leerDia(){
+    cout << endl ;
     cout << "1. Lunes" << endl;
     cout << "2. Martes" << endl;
     cout << "3. Miercoles" << endl;
     cout << "4. Jueves" << endl;
     cout << "5. Viernes" << endl;
-    int opcion = leerEnteroRango("Escoja un numero (1-5): ", 1, 5);
+
+    int opcion = leerEnteroRango("Escoja el dia (1-5): ", 1, 5);
 
     switch (opcion){
         case 1:
@@ -70,20 +72,15 @@ void ingresarMateria(Lista_Doble<Materia>& materias){
     string nombre = leerTexto("Nombre de la Materia: ");
 
     Materia materia(nrc, nombre);
-    int cantidad = leerEnteroRango("Escoja un numero (1-5): ", 1, 5);
+    int cantidad = leerEnteroRango("Cuantos dias a la semana dicta clases (1-5): ", 1, 5);
     for (int i = 1; i <= cantidad; i++){
-        cout << "Horario " << i << " " << endl;
+        cout << "--- Horario " << i << " ---" << endl;
         int id = nrc * 10 + i;
         string dia = leerDia();
-        int inicio = leerHora("Hora de inicio:");
-        int fin = leerHora("Hora de fin:");
-        while (fin <= inicio){
-            cout << "Error: la hora de fin debe ser mayor que la de inicio." << endl;
-            fin = leerHora("Hora de fin:");
-        }
+        int inicio, fin;
+        leerFranja(inicio, fin);
         materia.agregarHorario(Horario(id, inicio, fin, dia));
     }
-
     materias.insertarFinal(materia);
     cout << "Materia registrada correctamente." << endl;
 }
@@ -103,12 +100,24 @@ void agregarHorarioMateria(Lista_Doble<Materia>& materias){
     }
 
     string dia = leerDia();
-    int inicio = leerHora("Hora de inicio:");
-    int fin = leerHora("Hora de fin:");
-    while (fin <= inicio){
-        cout << "Error: la hora de fin debe ser mayor que la de inicio." << endl;
-        fin = leerHora("Hora de fin:");
-    }
+    int inicio, fin;
+    leerFranja(inicio, fin);
     materia.agregarHorario(Horario(id, inicio, fin, dia));
     cout << "Horario agregado correctamente." << endl;
 }
+
+void leerFranja(int& inicio, int& fin){
+    cout << endl;
+    cout << "1. 07:00 - 09:00" << endl;
+    cout << "2. 09:00 - 11:00" << endl;
+    cout << "3. 11:00 - 13:00" << endl;
+    cout << "4. 13:00 - 15:00" << endl;
+    cout << "5. 15:00 - 17:00" << endl;
+    cout << "6. 17:00 - 19:00" << endl;
+    cout << "7. 19:00 - 21:00" << endl;
+    int opcion = leerEnteroRango("Escoja la franja: ", 1, 7);
+    inicio = 420 + (opcion - 1) * 120;
+    fin = inicio + 120;
+
+}
+
