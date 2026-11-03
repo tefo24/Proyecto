@@ -14,5 +14,6 @@ void eliminarMateria(Lista_Doble<Materia>& materias);
 void consultarMateria(Lista_Doble<Materia>& materias);
 void imprimirMaterias(Lista_Doble<Materia>& materias);
 void leerFranja(int& inicio, int& fin);
+bool franjaOcupada(Materia& materia, std::string dia, int inicio);
 
 #endif

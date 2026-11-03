@@ -69,7 +69,7 @@ void ingresarMateria(Lista_Doble<Materia>& materias){
         cout << "La materia ya existe" << endl;
         return;
     }
-    string nombre = leerTexto("Nombre de la Materia: ");
+    string nombre = leerSoloLetras("Nombre de la Materia: ");
 
     Materia materia(nrc, nombre);
     int cantidad = leerEnteroRango("Cuantos dias a la semana dicta clases (1-5): ", 1, 5);
@@ -79,6 +79,11 @@ void ingresarMateria(Lista_Doble<Materia>& materias){
         string dia = leerDia();
         int inicio, fin;
         leerFranja(inicio, fin);
+        while (franjaOcupada(materia, dia, inicio)){
+            cout << "Esa franja ya esta registrada el " << dia << " para esta materia, escoja otra" << endl;
+            dia = leerDia();
+            leerFranja(inicio, fin);
+        }
         materia.agregarHorario(Horario(id, inicio, fin, dia));
     }
     materias.insertarFinal(materia);
@@ -102,6 +107,11 @@ void agregarHorarioMateria(Lista_Doble<Materia>& materias){
     string dia = leerDia();
     int inicio, fin;
     leerFranja(inicio, fin);
+    while (franjaOcupada(materia, dia, inicio)){
+        cout << "Esa franja ya esta registrada el " << dia << " para esta materia, escoja otra" << endl;
+        dia = leerDia();
+        leerFranja(inicio, fin);
+    }
     materia.agregarHorario(Horario(id, inicio, fin, dia));
     cout << "Horario agregado correctamente." << endl;
 }
@@ -119,5 +129,16 @@ void leerFranja(int& inicio, int& fin){
     inicio = 420 + (opcion - 1) * 120;
     fin = inicio + 120;
 
+}
+
+bool franjaOcupada(Materia& materia, string dia, int inicio){
+    Nodo<Horario>* aux = materia.getHorarios().getCabeza();
+    while (aux != nullptr){
+        if (aux->getDato().getDia() == dia && aux->getDato().getHora_Inicio() == inicio){
+            return true;
+        }
+        aux = aux->getSiguiente();
+    }
+    return false;
 }
 

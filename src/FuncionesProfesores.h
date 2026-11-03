@@ -9,5 +9,6 @@ void ingresarProfesor(Lista_Doble<Profesor>& profesores, Lista_Doble<Materia>& m
 void consultarProfesor(Lista_Doble<Profesor>& profesores);
 void eliminarProfesor(Lista_Doble<Profesor>& profesores);
 void imprimirProfesores(Lista_Doble<Profesor>& profesores);
+int choqueHorario(Profesor& profesor, Materia& nueva);
 
 #endif

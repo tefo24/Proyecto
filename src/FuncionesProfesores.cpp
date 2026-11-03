@@ -20,18 +20,27 @@ void ingresarProfesor(Lista_Doble<Profesor>& profesores, Lista_Doble<Materia>& m
 
     int cantidad = leerEnteroRango("Cuantas materias dicta (1-5): ", 1, 5);
     for (int i = 1; i <= cantidad; i++){
-        int nrc = leerNRC();
-        Nodo<Materia>* encontrada = materias.buscar(Materia(nrc, ""));
-        if (encontrada == nullptr){
-            cout << "La materia no existe" << endl;
-            int opcion = leerEnteroRango("1. Intentar otro NRC 2. Omitir: ", 1, 2);
-            if (opcion == 1){
-                i--;
-            }
+    int nrc = leerNRC();
+    Nodo<Materia>* encontrada = materias.buscar(Materia(nrc, ""));
+    if (encontrada == nullptr){
+        cout << "La materia no existe" << endl;
+        int opcion = leerEnteroRango("1. Intentar otro NRC  2. Omitir: ", 1, 2);
+        if (opcion == 1){
+            i--;
+        }
+    }else if (profesor.getMaterias().buscar(encontrada->getDato()) != nullptr){
+        cout << "Esa materia ya esta asignada a este profesor" << endl;
+        i--;
+    }else{
+        int nrcChoque = choqueHorario(profesor, encontrada->getDato());
+        if (nrcChoque != -1){
+            cout << "Choque de horario con la materia NRC " << nrcChoque << ", escoja otra" << endl;
+            i--;
         }else{
             profesor.getMaterias().insertarFinal(encontrada->getDato());
         }
     }
+}
 
     profesores.insertarFinal(profesor);
     cout << "Profesor ingresado correctamente" << endl;
@@ -62,4 +71,25 @@ void imprimirProfesores(Lista_Doble<Profesor>& profesores){
         return;
     }
     profesores.imprimir();
+}
+
+int choqueHorario(Profesor& profesor, Materia& nueva){
+    Nodo<Materia>* auxMateria = profesor.getMaterias().getCabeza();
+    while (auxMateria != nullptr){
+        Materia& asignada = auxMateria->getDato();
+        Nodo<Horario>* h1 = asignada.getHorarios().getCabeza();
+        while (h1 != nullptr){
+            Nodo<Horario>* h2 = nueva.getHorarios().getCabeza();
+            while (h2 != nullptr){
+                if (h1->getDato().getDia() == h2->getDato().getDia() &&
+                    h1->getDato().getHora_Inicio() == h2->getDato().getHora_Inicio()){
+                    return asignada.getNrc();
+                }
+                h2 = h2->getSiguiente();
+            }
+            h1 = h1->getSiguiente();
+        }
+        auxMateria = auxMateria->getSiguiente();
+    }
+    return -1;
 }
