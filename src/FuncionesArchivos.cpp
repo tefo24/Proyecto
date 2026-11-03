@@ -40,6 +40,24 @@ static bool aEntero(string texto, int& resultado){
     if (negativo) resultado = -resultado;
     return true;
 }
+static string horaATexto(int minutos){
+    string texto = "";
+    if (minutos / 60 < 10) texto += "0";
+    texto += to_string(minutos / 60) + ":";
+    if (minutos % 60 < 10) texto += "0";
+    texto += to_string(minutos % 60);
+    return texto;
+}
+
+static bool textoAHora(string texto, int& minutos){
+    size_t pos = texto.find(':');
+    if (pos == string::npos) return false;
+    int h, m;
+    if (!aEntero(texto.substr(0, pos), h) || !aEntero(texto.substr(pos + 1), m)) return false;
+    if (h > 23 || m > 59) return false;
+    minutos = h * 60 + m;
+    return true;
+}
 
 // ============================================================
 //  MATERIAS
@@ -50,22 +68,18 @@ void guardarMaterias(Lista_Doble<Materia>& materias){
         cout << "No se pudo crear " << ARCHIVO_MATERIAS << endl;
         return;
     }
-
     int cantidad = 0;
     for (Nodo<Materia>* nodo = materias.getCabeza(); nodo != nullptr; nodo = nodo->getSiguiente()){
         Materia& m = nodo->getDato();
-
-        // contar los horarios de la materia
-        int totalHorarios = 0;
+        int total = 0;
         for (Nodo<Horario>* h = m.getHorarios().getCabeza(); h != nullptr; h = h->getSiguiente()){
-            totalHorarios++;
+            total++;
         }
-
-        archivo << m.getNrc() << ";" << m.getNombre() << ";" << totalHorarios;
+        archivo << m.getNrc() << ";" << m.getNombre() << ";" << total;
         for (Nodo<Horario>* h = m.getHorarios().getCabeza(); h != nullptr; h = h->getSiguiente()){
-            Horario& hor = h->getDato();
-            archivo << ";" << hor.getId_Horario() << "," << hor.getHora_Inicio() << ","
-                    << hor.getHora_Fin() << "," << hor.getDia();
+            Horario& ho = h->getDato();
+            archivo << ";" << ho.getId_Horario() << "," << horaATexto(ho.getHora_Inicio()) << ","
+                    << horaATexto(ho.getHora_Fin()) << "," << ho.getDia();
         }
         archivo << endl;
         cantidad++;
@@ -113,7 +127,7 @@ void cargarMaterias(Lista_Doble<Materia>& materias){
             getline(sh, dia, ',');
 
             int id, ini, fin;
-            if (aEntero(idTxt, id) && aEntero(iniTxt, ini) && aEntero(finTxt, fin)){
+            if (aEntero(idTxt, id) && textoAHora(iniTxt, ini) && textoAHora(finTxt, fin)){
                 materia.agregarHorario(Horario(id, ini, fin, dia));
             }
         }
