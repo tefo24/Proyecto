@@ -132,6 +132,12 @@ void registrarSalida(Lista_Doble<Profesor>& profesores, Lista_Doble<Registro>& r
         cout << endl;
         return;
     }
+    if (horaFin != -1 && hora > horaFin + 10){
+        cout << "El plazo para registrar la salida ya vencio (hasta las ";
+        imprimirHora(horaFin + 10);
+        cout << ")" << endl;
+        return;
+    }    
 
     if (abierto->registrarSalida(hora)){
         cout << "Salida registrada a las ";
