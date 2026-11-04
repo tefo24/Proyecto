@@ -106,6 +106,7 @@ void cargarMaterias(Lista_Doble<Materia>& materias){
         string nrcTxt, nombre, totalTxt;
         getline(ss, nrcTxt, ';');
         getline(ss, nombre, ';');
+        nombre = formatoNombre(nombre);
         getline(ss, totalTxt, ';');
 
         int nrc, total;

@@ -69,12 +69,12 @@ void ingresarMateria(Lista_Doble<Materia>& materias){
         cout << "La materia ya existe" << endl;
         return;
     }
-    string nombre = leerSoloLetras("Nombre de la Materia: ");
+    string nombre = formatoNombre(leerSoloLetras("Nombre de la Materia: "));
 
     Materia materia(nrc, nombre);
     int cantidad = leerEnteroRango("Cuantos dias a la semana dicta clases (1-5): ", 1, 5);
     for (int i = 1; i <= cantidad; i++){
-        cout << "--- Horario " << i << " ---" << endl;
+        cout << "--- Horario " << i << " ---" << endl; 
         int id = nrc * 10 + i;
         string dia = leerDia();
         int inicio, fin;
