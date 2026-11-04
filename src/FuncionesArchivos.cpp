@@ -160,6 +160,7 @@ void guardarProfesores(Lista_Doble<Profesor>& profesores){
             archivo << m->getDato().getNrc();
             primera = false;
         }
+        archivo << ";" << p.getCorreo();
         archivo << endl;
         cantidad++;
     }

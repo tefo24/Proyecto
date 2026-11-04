@@ -22,11 +22,14 @@ public:
    virtual ~Persona();
    Persona(std::string cedula, std::string nombre, std::string apellido);
    void imprimirDatosPersonales(void);
+   std::string getCorreo(void);
+   void setCorreo(std::string newCorreo);
 
 protected:
    std::string cedula;
    std::string nombre;
    std::string apellido;
+   std::string correo;
 
 private:
 

@@ -26,6 +26,9 @@ void ingresarProfesor(Lista_Doble<Profesor>& profesores, Lista_Doble<Materia>& m
     nombre = formatoNombre(nombre);
     string apellido = formatoNombre(primerApellido + " " + segundoApellido);
     Profesor profesor(cedula, nombre, apellido);
+    
+    profesor.setCorreo(generarCorreo(primerNombre, segundoNombre, primerApellido, profesores));
+    cout << "Correo asignado: " << profesor.getCorreo() << endl;
 
     int cantidad = leerEnteroRango("Cuantas materias dicta (1-5): ", 1, 5);
     for (int i = 1; i <= cantidad; i++){
@@ -101,4 +104,39 @@ int choqueHorario(Profesor& profesor, Materia& nueva){
         auxMateria = auxMateria->getSiguiente();
     }
     return -1;
+}
+bool existeCorreo(Lista_Doble<Profesor>& profesores, string correo){
+    Nodo<Profesor>* aux = profesores.getCabeza();
+    while (aux != nullptr){
+        if (aux->getDato().getCorreo() == correo){
+            return true;
+        }
+        aux = aux->getSiguiente();
+    }
+    return false;
+}
+
+string generarCorreo(string primerNombre, string segundoNombre, string primerApellido, Lista_Doble<Profesor>& profesores){
+    string base = "";
+    base += primerNombre[0];
+    if (segundoNombre != ""){
+        base += segundoNombre[0];
+    }
+    for (size_t i = 0; i < primerApellido.size(); i++){
+        if (primerApellido[i] != ' '){
+            base += primerApellido[i];
+        }
+    }
+    for (size_t i = 0; i < base.size(); i++){
+        if (base[i] >= 'A' && base[i] <= 'Z'){
+            base[i] = base[i] + 32;
+        }
+    }
+    string correo = base + "@espe.edu.ec";
+    int numero = 1;
+    while (existeCorreo(profesores, correo)){
+        correo = base + to_string(numero) + "@espe.edu.ec";
+        numero++;
+    }
+    return correo;
 }

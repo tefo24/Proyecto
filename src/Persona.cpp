@@ -15,6 +15,7 @@ Persona::Persona() {
     this->cedula = "";
     this->nombre = "";
     this->apellido = "";
+    this->correo = "";   
 }
 
 // Constructor con parametros (se llaman igual que los atributos, por eso se usa this->)
@@ -22,6 +23,7 @@ Persona::Persona(string cedula, string nombre, string apellido) {
     this->cedula = cedula;
     this->nombre = nombre;
     this->apellido = apellido;
+    this->correo = "";       
 }
 
 Persona::~Persona() {
@@ -52,9 +54,18 @@ void Persona::setApellido(string apellido) {
     this->apellido = apellido;
 }
 
+string Persona::getCorreo() {
+    return this->correo;
+}
+
+void Persona::setCorreo(string correo) {
+    this->correo = correo;
+}
+
 // ---------- Imprimir ----------
 void Persona::imprimirDatosPersonales() {
     cout << "   Cedula  : " << this->cedula << endl;
     cout << "   Nombre  : " << this->nombre << endl;
     cout << "   Apellido: " << this->apellido << endl;
+    cout << "   Correo  : " << this->correo << endl;
 }
