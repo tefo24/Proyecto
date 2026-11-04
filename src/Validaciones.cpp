@@ -55,7 +55,11 @@ int leerEntero(string mensaje) {
     string entrada;
     while (true) {
         cout << mensaje;
-        getline(cin, entrada);
+        if (!getline(cin, entrada)){
+    cin.clear();
+    cout << "\n  Error: entrada no valida.\n";
+    continue;
+}
         // maximo 9 digitos para que el numero quepa en un int
         if (soloNumeros(entrada) && entrada.size() <= 9) {
             return atoi(entrada.c_str());
@@ -76,7 +80,11 @@ string leerTexto(string mensaje) {
     string entrada;
     while (true) {
         cout << mensaje;
-        getline(cin, entrada);
+        if (!getline(cin, entrada)){
+        cin.clear();
+        cout << "\n  Error: entrada no valida.\n";
+        continue;
+}
         // no vacio y no solo espacios
         bool hayAlgo = false;
         for (size_t i = 0; i < entrada.size(); i++) {
@@ -91,7 +99,11 @@ string leerSoloLetras(string mensaje) {
     string entrada;
     while (true) {
         cout << mensaje;
-        getline(cin, entrada);
+        if (!getline(cin, entrada)){
+        cin.clear();
+        cout << "\n  Error: entrada no valida.\n";
+        continue;
+}
         if (soloLetras(entrada)) return entrada;
         cout << "  Error: solo se permiten letras (sin numeros ni simbolos).\n";
     }
@@ -101,7 +113,11 @@ string leerCedula() {
     string entrada;
     while (true) {
         cout << "Cedula (10 digitos): ";
-        getline(cin, entrada);
+        if (!getline(cin, entrada)){
+        cin.clear();
+        cout << "\n  Error: entrada no valida.\n";
+        continue;
+}
         if (validarCedula(entrada)) return entrada;
         cout << "  Error: cedula ecuatoriana no valida.\n";
     }
@@ -111,7 +127,11 @@ int leerNRC() {
     string entrada;
     while (true) {
         cout << "NRC (5 digitos): ";
-        getline(cin, entrada);
+        if (!getline(cin, entrada)){
+        cin.clear();
+        cout << "\n  Error: entrada no valida.\n";
+        continue;
+}
         if (entrada.size() == 5 && soloNumeros(entrada)) return atoi(entrada.c_str());
         cout << "  Error: el NRC debe tener exactamente 5 numeros.\n";
     }
