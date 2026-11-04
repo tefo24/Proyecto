@@ -57,7 +57,7 @@ string leerDia(){
 
 int leerHora(string mensaje){
     cout << mensaje << endl;
-    int horas = leerEnteroRango(" Horas (7-21): ", 7, 21);
+    int horas = leerEnteroRango(" Horas (6-21): ", 6, 21);
     int minutos = leerEnteroRango(" Minutos (0-59): ", 0, 59);
     return horas * 60 + minutos;
  }

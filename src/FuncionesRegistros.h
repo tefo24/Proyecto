@@ -6,11 +6,8 @@
 #include "Registro.h"
 #include "Lista_Doble.h"
 
-int obtenerHoraActual();
-std::string obtenerDiaActual();
-std::string obtenerFechaActual();
+void iniciarJornada();
 void imprimirHora(int minutos);
-void configurarModoPrueba();
 
 void registrarEntrada(Lista_Doble<Profesor>& profesores, Lista_Doble<Registro>& registros);
 void registrarSalida(Lista_Doble<Profesor>& profesores, Lista_Doble<Registro>& registros);

@@ -56,6 +56,7 @@ int main(){
     Lista_Doble<Registro> registros;
 
     cargarTodo(materias, profesores, registros);
+    iniciarJornada();
 
     int opcion;
     do {
@@ -65,16 +66,22 @@ int main(){
         cout << "3. Registrar entrada" << endl;
         cout << "4. Registrar salida" << endl;
         cout << "5. Ver registros" << endl;
-        cout << "6. Modo prueba (dia y hora manual)" << endl;
+        cout << "6. Cambiar jornada (fecha y dia)" << endl;
         cout << "0. Salir" << endl;
         opcion = leerEnteroRango("Opcion: ", 0, 6);
         switch (opcion){
-            case 1: menuMaterias(materias); break;
-            case 2: menuProfesores(profesores, materias); break;
-            case 3: registrarEntrada(profesores, registros); guardarTodo(materias, profesores, registros); break;
-            case 4: registrarSalida(profesores, registros); guardarTodo(materias, profesores, registros); break;
-            case 5: imprimirRegistros(registros); break;
-            case 6: configurarModoPrueba(); break;
+            case 1: menuMaterias(materias); 
+            break;
+            case 2: menuProfesores(profesores, materias); 
+            break;
+            case 3: registrarEntrada(profesores, registros); guardarTodo(materias, profesores, registros); 
+            break;
+            case 4: registrarSalida(profesores, registros); guardarTodo(materias, profesores, registros); 
+            break;
+            case 5: imprimirRegistros(registros); 
+            break;
+            case 6: iniciarJornada(); 
+            break;
         }
     } while (opcion != 0);
 
