@@ -126,14 +126,14 @@ string leerCedula() {
 int leerNRC() {
     string entrada;
     while (true) {
-        cout << "NRC (5 digitos): ";
+        cout << "NRC (3 a 5 digitos): ";
         if (!getline(cin, entrada)){
-        cin.clear();
-        cout << "\n  Error: entrada no valida.\n";
-        continue;
-}
-        if (entrada.size() == 5 && soloNumeros(entrada)) return atoi(entrada.c_str());
-        cout << "  Error: el NRC debe tener exactamente 5 numeros.\n";
+            cin.clear();
+            cout << "\n  Error: entrada no valida.\n";
+            continue;
+        }
+        if (entrada.size() >= 3 && entrada.size() <= 5 && soloNumeros(entrada)) return atoi(entrada.c_str());
+        cout << "  Error: el NRC debe tener entre 3 y 5 numeros.\n";
     }
 }
 
