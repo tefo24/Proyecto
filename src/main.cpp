@@ -66,7 +66,7 @@ int main(){
         cout << "3. Registrar entrada" << endl;
         cout << "4. Registrar salida" << endl;
         cout << "5. Ver registros" << endl;
-        cout << "6. Cambiar jornada (fecha y dia)" << endl;
+        cout << "6. Cambiar dia de la jornada" << endl;
         cout << "0. Salir" << endl;
         opcion = leerEnteroRango("Opcion: ", 0, 6);
         switch (opcion){
