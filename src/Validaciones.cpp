@@ -155,3 +155,22 @@ string formatoNombre(string texto){
     }
     return texto;
 }
+
+string leerSoloLetrasOpcional(string mensaje) {
+    string entrada;
+    while (true) {
+        cout << mensaje;
+        if (!getline(cin, entrada)){
+            cin.clear();
+            cout << "\n  Error: entrada no valida.\n";
+            continue;
+        }
+        bool vacio = true;
+        for (size_t i = 0; i < entrada.size(); i++){
+            if (entrada[i] != ' ') vacio = false;
+        }
+        if (vacio) return "";
+        if (soloLetras(entrada)) return entrada;
+        cout << "  Error: solo se permiten letras (sin numeros ni simbolos).\n";
+    }
+}

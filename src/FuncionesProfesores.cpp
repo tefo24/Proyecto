@@ -14,8 +14,17 @@ void ingresarProfesor(Lista_Doble<Profesor>& profesores, Lista_Doble<Materia>& m
         cout << "Ya existe un profesor con esa cedula" << endl;
         return;
     }
-    string nombre = formatoNombre(leerSoloLetras("Nombre: "));
-    string apellido = formatoNombre(leerSoloLetras("Apellido: "));
+    string primerNombre = leerSoloLetras("Primer nombre: ");
+    string segundoNombre = leerSoloLetrasOpcional("Segundo nombre (Enter si no tiene): ");
+    string primerApellido = leerSoloLetras("Primer apellido: ");
+    string segundoApellido = leerSoloLetras("Segundo apellido: ");
+
+    string nombre = primerNombre;
+    if (segundoNombre != ""){
+        nombre = nombre + " " + segundoNombre;
+    }
+    nombre = formatoNombre(nombre);
+    string apellido = formatoNombre(primerApellido + " " + segundoApellido);
     Profesor profesor(cedula, nombre, apellido);
 
     int cantidad = leerEnteroRango("Cuantas materias dicta (1-5): ", 1, 5);

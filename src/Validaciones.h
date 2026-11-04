@@ -16,5 +16,6 @@ std::string leerSoloLetras(std::string mensaje);                      // solo le
 std::string leerCedula();                                             // pide cedula valida
 int         leerNRC();                                                // pide NRC de 5 digitos
 std::string formatoNombre(std:: string texto);
+std::string leerSoloLetrasOpcional(std::string mensaje);
 
 #endif
