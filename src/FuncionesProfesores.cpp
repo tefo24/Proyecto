@@ -15,7 +15,7 @@ void ingresarProfesor(Lista_Doble<Profesor>& profesores, Lista_Doble<Materia>& m
         return;
     }
     string primerNombre = leerSoloLetras("Primer nombre: ");
-    string segundoNombre = leerSoloLetrasOpcional("Segundo nombre (Enter si no tiene): ");
+    string segundoNombre = leerSoloLetrasOpcional("Segundo nombre: ");
     string primerApellido = leerSoloLetras("Primer apellido: ");
     string segundoApellido = leerSoloLetras("Segundo apellido: ");
 

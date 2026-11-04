@@ -126,7 +126,7 @@ string leerCedula() {
 int leerNRC() {
     string entrada;
     while (true) {
-        cout << "NRC (3 a 5 digitos): ";
+        cout << "NRC: ";
         if (!getline(cin, entrada)){
             cin.clear();
             cout << "\n  Error: entrada no valida.\n";
