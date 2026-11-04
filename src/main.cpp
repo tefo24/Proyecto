@@ -39,6 +39,7 @@ void menuProfesores(Lista_Doble<Profesor>& profesores, Lista_Doble<Materia>& mat
         cout << "2. Consultar profesor" << endl;
         cout << "3. Eliminar profesor" << endl;
         cout << "4. Imprimir profesores" << endl;
+        cout << "5. Asignar materia a un profesor" << endl;
         cout << "0. Volver" << endl;
         opcion = leerEnteroRango("Opcion: ", 0, 4);
         switch (opcion){
@@ -46,6 +47,7 @@ void menuProfesores(Lista_Doble<Profesor>& profesores, Lista_Doble<Materia>& mat
             case 2: consultarProfesor(profesores); break;
             case 3: eliminarProfesor(profesores); break;
             case 4: imprimirProfesores(profesores); break;
+            case 5: asignarMateria(profesores, materias); break;
         }
     } while (opcion != 0);
 }

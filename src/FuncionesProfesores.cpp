@@ -140,3 +140,30 @@ string generarCorreo(string primerNombre, string segundoNombre, string primerApe
     }
     return correo;
 }
+
+void asignarMateria(Lista_Doble<Profesor>& profesores, Lista_Doble<Materia>& materias){
+    string cedula = leerCedula();
+    Nodo<Profesor>* nodoProfesor = profesores.buscar(Profesor(cedula, "", ""));
+    if (nodoProfesor == nullptr){
+        cout << "El profesor no existe" << endl;
+        return;
+    }
+    Profesor& profesor = nodoProfesor->getDato();
+    int nrc = leerNRC();
+    Nodo<Materia>* encontrada = materias.buscar(Materia(nrc, ""));
+    if (encontrada == nullptr){
+        cout << "La materia no existe" << endl;
+        return;
+    }
+    if (profesor.getMaterias().buscar(encontrada->getDato()) != nullptr){
+        cout << "Esa materia ya esta asignada a este profesor" << endl;
+        return;
+    }
+    int nrcChoque = choqueHorario(profesor, encontrada->getDato());
+    if (nrcChoque != -1){
+        cout << "Choque de horario con la materia NRC " << nrcChoque << endl;
+        return;
+    }
+    profesor.getMaterias().insertarFinal(encontrada->getDato());
+    cout << "Materia asignada correctamente" << endl;
+}
